@@ -1,0 +1,104 @@
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Micro break: Muscles</title>
+		<style type="text/css">
+			html,body {
+				height: 100%;
+				overflow: hidden;
+				margin: 0;
+			}
+			body {
+				font-family: "Avenir Next", Avenir, sans-serif;
+				color: #dedede;
+				font-weight: 300;
+				font-size: 5vmin;
+				line-height: 1.5;
+				background: #000;
+			}
+
+			h1 {
+				font-size: 1.6em;
+				font-weight: 300;
+				margin-bottom: 0;
+			}
+			h2 {
+				font-size: 1.1em;
+				font-weight: 300;
+				margin-top: 0;
+			}
+
+			.content {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				height: 100%;
+			}
+
+			.cell {
+				display: inline-block;
+				flex: 0 0 auto;
+				padding-bottom: 5em;
+				text-align: center;
+			}
+
+			.display-box {
+				text-transform: uppercase;
+				font-weight: bolder;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="content">
+			<div class="cell">
+				<h1>Time for a break</h1>
+				<h2>and a few short exercises</h2>
+				<p class="display-box">
+				</p>
+			</div>
+		</div>
+
+
+
+		<script>
+			let displayBox = document.querySelector('.display-box');
+			let catalog = [
+				{
+					name: "Push Ups",
+					reps: 10
+				},
+				{
+					name: "Sit Ups",
+					reps: 30
+				},
+				{
+					name: "Lunges",
+					reps: 30
+				},
+				{
+					name: "Squats",
+					reps: 25
+				}
+			]
+			let output = {
+				exercise: 0,
+				reps: 0
+			};
+
+			function chooseExercise() {
+				var randomExercise = Math.floor(Math.random() * catalog.length);
+				output.exercise = catalog[randomExercise].name;
+				output.reps = catalog[randomExercise].reps;
+			};
+
+			function displayExercise() {
+				chooseExercise();
+				displayBox.innerHTML = output.reps + " × " + output.exercise;
+			};
+
+			displayExercise();
+		</script>
+	</body>
+</html>

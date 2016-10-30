@@ -1,0 +1,14 @@
+{
+  "author": {
+    "name": "Salty Mouse",
+    "email": "saltymouse@outlook.com",
+    "url": "http://github.com/saltymouse"
+  },
+  "comments": "Short workouts to get you pumped and ready to work.",
+  "rootDocument": "index.html",
+  "created": "2016-10-29",
+  "identifier": "Muscles",
+  "version": 1,
+  "modified": "2016-10-29",
+  "name": "Muscles"
+}
