@@ -1,0 +1,66 @@
+html,body {
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+body {
+  font-family: "Avenir Next", Avenir, sans-serif;
+  color: #dedede;
+  font-weight: 300;
+  font-size: 5vmin;
+  line-height: 1.5;
+  background: radial-gradient( circle, transparent, rgba(0,0,0, 1))
+}
+
+h1 {
+  font-size: 1.6em;
+  font-weight: 300;
+  margin-bottom: 0;
+}
+h2 {
+  font-style: italic;
+  font-size: 1.1em;
+  font-weight: 300;
+  margin-top: 0;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cell {
+  display: inline-block;
+  flex: 0 0 auto;
+  /*padding-bottom: 5em;*/
+  text-align: center;
+}
+
+.display-box {
+  text-transform: uppercase;
+  font-weight: bolder;
+  font-size: 1.9em;
+}
+
+.catalog-box {
+  width: 30vw;
+  flex-wrap: wrap;
+  align-self: flex-end;
+  font-size: 0.5em;
+}
+
+.catalog-box dt,
+.catalog-box dd {
+  background: deeppink;
+  flex: auto;
+}
+.catalog-box dt {
+  /*width: 80%;*/
+}
+.catalog-box dd {
+  /*width: 20%;*/
+}
