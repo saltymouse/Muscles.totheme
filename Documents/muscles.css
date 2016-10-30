@@ -15,13 +15,39 @@ body {
 h1 {
   font-size: 1.6em;
   font-weight: 300;
-  margin-bottom: 0;
+  margin: 0;
+  position: relative;
+}
+h1::after {
+  content: '';
+  background: deeppink;
+  width: 100%;
+  height: 3em;;
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotate(4deg);
+  z-index: -1;
 }
 h2 {
   font-style: italic;
   font-size: 1.1em;
   font-weight: 300;
   margin-top: 0;
+  position: relative;
+}
+h2::after {
+  content: '';
+  background: deepskyblue;
+  width: 120%;
+  height: 3em;;
+  display: inline-block;
+  position: absolute;
+  top: 3em;
+  left: -1em;
+  transform: rotate(-3deg);
+  z-index: -1;
 }
 
 .content {
@@ -36,7 +62,6 @@ h2 {
 .cell {
   display: inline-block;
   flex: 0 0 auto;
-  /*padding-bottom: 5em;*/
   text-align: center;
 }
 
@@ -48,7 +73,7 @@ h2 {
 
 .catalog-box {
   display: flex;
-  width: 30vw;
+  width: 20vw;
   flex-wrap: wrap;
   justify-content: flex-start;
   align-self: flex-end;
@@ -56,9 +81,10 @@ h2 {
 }
 
 .catalog-box dt {
-  flex: 1 1 80%;
+  flex: 1 1 70%;
 }
 .catalog-box dd {
   margin: 0;
   flex: 1 1 auto;
+  text-align: center;
 }
