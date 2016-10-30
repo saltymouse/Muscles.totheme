@@ -2,74 +2,7 @@
 	<head>
 		<meta charset="utf-8">
 		<title>Micro break: Muscles</title>
-		<style type="text/css">
-			html,body {
-				height: 100%;
-				overflow: hidden;
-				margin: 0;
-			}
-			body {
-				font-family: "Avenir Next", Avenir, sans-serif;
-				color: #dedede;
-				font-weight: 300;
-				font-size: 5vmin;
-				line-height: 1.5;
-				background: radial-gradient( circle, transparent, rgba(0,0,0, 1))
-			}
-
-			h1 {
-				font-size: 1.6em;
-				font-weight: 300;
-				margin-bottom: 0;
-			}
-			h2 {
-				font-style: italic;
-				font-size: 1.1em;
-				font-weight: 300;
-				margin-top: 0;
-			}
-
-			.content {
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				width: 100%;
-				height: 100%;
-			}
-
-			.cell {
-				display: inline-block;
-				flex: 0 0 auto;
-				/*padding-bottom: 5em;*/
-				text-align: center;
-			}
-
-			.display-box {
-				text-transform: uppercase;
-				font-weight: bolder;
-				font-size: 1.9em;
-			}
-
-			.catalog-box {
-				width: 30vw;
-				flex-wrap: wrap;
-				align-self: flex-end;
-				font-size: 0.5em;
-			}
-
-			.catalog-box dt,
-			.catalog-box dd {
-				background: deeppink;
-				flex: auto;
-			}
-			.catalog-box dt {
-				/*width: 80%;*/
-			}
-			.catalog-box dd {
-				/*width: 20%;*/
-			}
-		</style>
+		<link rel="stylesheet" href="muscles.css">
 	</head>
 	<body>
 		<div class="content">
@@ -81,65 +14,6 @@
 
 			<dl class="catalog-box"></dl>
 		</div>
-
-
-
-		<script>
-			let displayBox = document.querySelector('.display-box'),
-					catalogBox = document.querySelector('.catalog-box');
-
-			let catalog = [
-				{
-					name: "Push Ups",
-					reps: 10
-				},
-				{
-					name: "Sit Ups",
-					reps: 30
-				},
-				{
-					name: "Lunges",
-					reps: 30
-				},
-				{
-					name: "Squats",
-					reps: 25
-				}
-			]
-			let output = {
-				exercise: 0,
-				reps: 0
-			};
-
-			function displayCatalog() {
-				catalog.forEach(function(exercise) {
-					let nameElement = document.createElement('dt'),
-							repsElement = document.createElement('dd');
-
-					nameElement.contentEditable = true;
-					repsElement.contentEditable = true;
-
-					nameElement.textContent = exercise.name;
-					catalogBox.appendChild(nameElement);
-
-					repsElement.textContent = exercise.reps;
-					catalogBox.appendChild(repsElement);
-				});
-			};
-
-			function chooseExercise() {
-				var randomExercise = Math.floor(Math.random() * catalog.length);
-				output.exercise = catalog[randomExercise].name;
-				output.reps = catalog[randomExercise].reps;
-			};
-
-			function displayExercise() {
-				chooseExercise();
-				displayBox.textContent = `${output.reps} × ${output.exercise}`;
-			};
-
-			displayExercise();
-			displayCatalog();
-		</script>
+		<script src="muscles.js"></script>
 	</body>
 </html>
