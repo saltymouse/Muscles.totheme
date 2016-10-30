@@ -41,7 +41,7 @@
 			.cell {
 				display: inline-block;
 				flex: 0 0 auto;
-				padding-bottom: 5em;
+				/*padding-bottom: 5em;*/
 				text-align: center;
 			}
 
@@ -50,6 +50,25 @@
 				font-weight: bolder;
 				font-size: 1.9em;
 			}
+
+			.catalog-box {
+				width: 30vw;
+				flex-wrap: wrap;
+				align-self: flex-end;
+				font-size: 0.5em;
+			}
+
+			.catalog-box dt,
+			.catalog-box dd {
+				background: deeppink;
+				flex: auto;
+			}
+			.catalog-box dt {
+				/*width: 80%;*/
+			}
+			.catalog-box dd {
+				/*width: 20%;*/
+			}
 		</style>
 	</head>
 	<body>
@@ -57,15 +76,18 @@
 			<div class="cell">
 				<h1>Time for a break</h1>
 				<h2>and a few short exercises</h2>
-				<p class="display-box">
-				</p>
+				<p class="display-box"></p>
 			</div>
+
+			<dl class="catalog-box"></dl>
 		</div>
 
 
 
 		<script>
-			let displayBox = document.querySelector('.display-box');
+			let displayBox = document.querySelector('.display-box'),
+					catalogBox = document.querySelector('.catalog-box');
+
 			let catalog = [
 				{
 					name: "Push Ups",
@@ -89,6 +111,22 @@
 				reps: 0
 			};
 
+			function displayCatalog() {
+				catalog.forEach(function(exercise) {
+					let nameElement = document.createElement('dt'),
+							repsElement = document.createElement('dd');
+
+					nameElement.contentEditable = true;
+					repsElement.contentEditable = true;
+
+					nameElement.textContent = exercise.name;
+					catalogBox.appendChild(nameElement);
+
+					repsElement.textContent = exercise.reps;
+					catalogBox.appendChild(repsElement);
+				});
+			};
+
 			function chooseExercise() {
 				var randomExercise = Math.floor(Math.random() * catalog.length);
 				output.exercise = catalog[randomExercise].name;
@@ -97,10 +135,11 @@
 
 			function displayExercise() {
 				chooseExercise();
-				displayBox.innerHTML = output.reps + " × " + output.exercise;
+				displayBox.textContent = `${output.reps} × ${output.exercise}`;
 			};
 
 			displayExercise();
+			displayCatalog();
 		</script>
 	</body>
 </html>
