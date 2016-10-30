@@ -9,7 +9,7 @@ body {
   font-weight: 300;
   font-size: 5vmin;
   line-height: 1.5;
-  background: radial-gradient( circle, transparent, rgba(0,0,0, 1))
+  background: radial-gradient( circle, dodgerblue, #000)
 }
 
 h1 {
@@ -47,20 +47,18 @@ h2 {
 }
 
 .catalog-box {
+  display: flex;
   width: 30vw;
   flex-wrap: wrap;
+  justify-content: flex-end;
   align-self: flex-end;
   font-size: 0.5em;
 }
 
-.catalog-box dt,
-.catalog-box dd {
-  background: deeppink;
-  flex: auto;
-}
 .catalog-box dt {
-  /*width: 80%;*/
+  flex: 1 1 80%;
 }
 .catalog-box dd {
-  /*width: 20%;*/
+  margin: 0;
+  flex: 1 1 auto;
 }
