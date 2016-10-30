@@ -9,7 +9,7 @@ body {
   font-weight: 300;
   font-size: 5vmin;
   line-height: 1.5;
-  background: radial-gradient( circle, dodgerblue, #000)
+  background: radial-gradient( circle, transparent, #000); /* color will be set in the Time Out prefs so transparent is set here */
 }
 
 h1 {
@@ -50,7 +50,7 @@ h2 {
   display: flex;
   width: 30vw;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-self: flex-end;
   font-size: 0.5em;
 }
