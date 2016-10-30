@@ -1,45 +1,58 @@
 let displayBox = document.querySelector('.display-box'),
     catalogBox = document.querySelector('.catalog-box');
 
-let catalog = [
-  {
-    name: "Push Ups",
-    reps: 10
-  },
-  {
-    name: "Sit Ups",
-    reps: 30
-  },
-  {
-    name: "Lunges",
-    reps: 30
-  },
-  {
-    name: "Squats",
-    reps: 25
-  }
-]
+NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+
+let catalog = {
+  "Push Ups": 10,
+  "Sit Ups": 30,
+  "Lunges": 30,
+  "Squats": 15
+}
+
+catalogBox.addEventListener('input', function(event) {
+  console.log(event.target.innerHTML);
+
+}, false)
+
+
+
 let output = {
   exercise: 0,
   reps: 0
 };
 
 function displayCatalog() {
-  catalog.forEach(function(exercise) {
+  for (var exercise in catalog) {
     let nameElement = document.createElement('dt'),
         repsElement = document.createElement('dd');
 
     nameElement.contentEditable = true;
     repsElement.contentEditable = true;
 
-    nameElement.textContent = exercise.name;
-    catalogBox.appendChild(nameElement);
+    if (typeof catalog[exercise] !== 'function') {
+      nameElement.textContent = exercise;
+      catalogBox.appendChild(nameElement);
 
-    repsElement.textContent = exercise.reps;
-    catalogBox.appendChild(repsElement);
-  });
+      repsElement.textContent = catalog[exercise];
+      catalogBox.appendChild(repsElement);
+    }
+  };
 };
+function pickExercise() {
+  var result;
+  var count = 0;
 
+  for (var exercise in catalog) {
+    if (Math.random() < 1/++count) {
+      if (typeof catalog[exercise] !== 'function') {
+        output.exercise = exercise;
+        output.reps = catalog[exercise];
+      }
+    }
+  }
+}
 function chooseExercise() {
   var randomExercise = Math.floor(Math.random() * catalog.length);
   output.exercise = catalog[randomExercise].name;
@@ -47,7 +60,7 @@ function chooseExercise() {
 };
 
 function displayExercise() {
-  chooseExercise();
+  pickExercise();
   displayBox.textContent = `${output.reps} × ${output.exercise}`;
 };
 
