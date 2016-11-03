@@ -13,10 +13,10 @@ let catalog = {
 
 catalogBox.addEventListener('input', function(event) {
   console.log(event.target.innerHTML);
-
+  // localStorage code
+  localStorage.setItem('userList', JSON.stringify(catalogBox));
+  console.log(localStorage.getItem('userList'));
 }, false)
-
-
 
 let output = {
   exercise: 0,
