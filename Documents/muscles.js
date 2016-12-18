@@ -19,11 +19,11 @@ let localCatalog = JSON.parse(localStorage.getItem('exercises'));
 
 catalogBox.addEventListener('input', function (event) {
   // make a copy of the existing localStorage data
-  var newCatalog = localCatalog;
+  let newCatalog = localCatalog;
 
   // grab the data-item names for elements being currently edited
-  var focusedParentName = event.target.parentElement.getAttribute('data-item');
-  var focusedChildName = event.target.getAttribute('data-item');
+  let focusedParentName = event.target.parentElement.getAttribute('data-item');
+  let focusedChildName = event.target.getAttribute('data-item');
 
   // update relevant datum within the newCatalog with user input/changes
   newCatalog[focusedParentName][focusedChildName] = event.target.innerHTML;
@@ -66,28 +66,23 @@ function displayCatalog() {
   };
 };
 
+function pickRandomExercise() {
+  // make an array out of the localStorage object
+  var keys = Object.keys(localCatalog);
 
-function pickExercise() {
-  var result;
-  var count = 0;
-  for (var exercise in localCatalog) {
-    if (Math.random() < 1 / ++count) {
-      if (typeof localCatalog[exercise] !== 'function') {
-        output.exercise = localCatalog[exercise].name;
-        output.reps = localCatalog[exercise].reps;
-      }
-    }
-  }
+  // generate a random number within the range of elements localCatalog
+  var rand = Math.floor(Math.random() * keys.length);
+
+  // set the object property based on above random number
+  var prop = keys[rand];
+
+  // output the property's name and reps
+  output.exercise = localCatalog[prop].name;
+  output.reps = localCatalog[prop].reps;
 }
 
-function chooseExercise() {
-  var randomExercise = Math.floor(Math.random() * catalog.length);
-  output.exercise = catalog[randomExercise].name;
-  output.reps = catalog[randomExercise].reps;
-};
-
 function displayExercise() {
-  pickExercise();
+  pickRandomExercise();
   displayBox.textContent = `${output.reps} × ${output.exercise}`;
 };
 
