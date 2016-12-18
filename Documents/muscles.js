@@ -83,7 +83,7 @@ function pickRandomExercise() {
 
 function displayExercise() {
   pickRandomExercise();
-  displayBox.textContent = `${output.reps} × ${output.exercise}`;
+  displayBox.innerHTML = `${output.reps} <span class="multiplier">×</span> ${output.exercise}`;
 };
 
 // initialize the app
