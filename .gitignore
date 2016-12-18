@@ -1,2 +1,5 @@
 # Keep OS-generated files out of the repo
 .DS_Store
+
+# Random generated files
+router
