@@ -18,14 +18,17 @@ if (!window.localStorage.getItem('exercises')) {
 let localCatalog = JSON.parse(localStorage.getItem('exercises'));
 
 catalogBox.addEventListener('input', function (event) {
-
+  // make a copy of the existing localStorage data
   var newCatalog = localCatalog;
 
+  // grab the data-item names for elements being currently edited
   var focusedParentName = event.target.parentElement.getAttribute('data-item');
   var focusedChildName = event.target.getAttribute('data-item');
 
+  // update relevant datum within the newCatalog with user input/changes
   newCatalog[focusedParentName][focusedChildName] = event.target.innerHTML;
 
+  // push changes to localStorage
   localStorage.setItem('exercises', JSON.stringify(newCatalog));
 
 }, false)
