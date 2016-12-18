@@ -1,21 +1,33 @@
-let displayBox = document.querySelector('.display-box'),
-    catalogBox = document.querySelector('.catalog-box');
+// grab our dom elements
+let displayBox = document.querySelector('.current-exercise'),
+  catalogBox = document.querySelector('.catalog-box');
 
-NodeList.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
-HTMLCollection.prototype[Symbol.iterator] = Array.prototype[Symbol.iterator];
+// set default exercises if none exist in localStorage
+if (!window.localStorage.getItem('exercises')) {
+  let catalog = {
+    ex01: { name: "Push Ups", reps: 10 },
+    ex02: { name: "Sit Ups", reps: 30 },
+    ex03: { name: "Lunges", reps: 30 },
+    ex04: { name: "Squats", reps: 15 }
+  }
 
-let catalog = {
-  "Push Ups": 10,
-  "Sit Ups": 30,
-  "Lunges": 30,
-  "Squats": 15
+  localStorage.setItem('exercises', JSON.stringify(catalog));
 }
 
-catalogBox.addEventListener('input', function(event) {
-  console.log(event.target.innerHTML);
-  // localStorage code
-  localStorage.setItem('userList', JSON.stringify(catalogBox));
-  console.log(localStorage.getItem('userList'));
+// set a variable for the localStorage 'exercises' item
+let localCatalog = JSON.parse(localStorage.getItem('exercises'));
+
+catalogBox.addEventListener('input', function (event) {
+
+  var newCatalog = localCatalog;
+
+  var focusedParentName = event.target.parentElement.getAttribute('data-item');
+  var focusedChildName = event.target.getAttribute('data-item');
+
+  newCatalog[focusedParentName][focusedChildName] = event.target.innerHTML;
+
+  localStorage.setItem('exercises', JSON.stringify(newCatalog));
+
 }, false)
 
 let output = {
@@ -24,35 +36,47 @@ let output = {
 };
 
 function displayCatalog() {
-  for (var exercise in catalog) {
-    let nameElement = document.createElement('dt'),
-        repsElement = document.createElement('dd');
+  for (var item in localCatalog) {
 
-    nameElement.contentEditable = true;
-    repsElement.contentEditable = true;
+    if (typeof localCatalog[item] !== 'function') {
 
-    if (typeof catalog[exercise] !== 'function') {
-      nameElement.textContent = exercise;
-      catalogBox.appendChild(nameElement);
+      let exerciseSet = document.createElement('dl'),
+        nameBox = document.createElement('dt'),
+        repsBox = document.createElement('dd');
 
-      repsElement.textContent = catalog[exercise];
-      catalogBox.appendChild(repsElement);
+      exerciseSet.setAttribute('data-item', item);
+
+      nameBox.contentEditable = true;
+      repsBox.contentEditable = true;
+
+      nameBox.setAttribute('data-item', 'name');
+      repsBox.setAttribute('data-item', 'reps');
+
+      nameBox.textContent = localCatalog[item].name;
+      repsBox.textContent = localCatalog[item].reps;
+
+      exerciseSet.appendChild(nameBox);
+      exerciseSet.appendChild(repsBox);
+
+      catalogBox.appendChild(exerciseSet);
     }
   };
 };
+
+
 function pickExercise() {
   var result;
   var count = 0;
-
-  for (var exercise in catalog) {
-    if (Math.random() < 1/++count) {
-      if (typeof catalog[exercise] !== 'function') {
-        output.exercise = exercise;
-        output.reps = catalog[exercise];
+  for (var exercise in localCatalog) {
+    if (Math.random() < 1 / ++count) {
+      if (typeof localCatalog[exercise] !== 'function') {
+        output.exercise = localCatalog[exercise].name;
+        output.reps = localCatalog[exercise].reps;
       }
     }
   }
 }
+
 function chooseExercise() {
   var randomExercise = Math.floor(Math.random() * catalog.length);
   output.exercise = catalog[randomExercise].name;
@@ -64,5 +88,6 @@ function displayExercise() {
   displayBox.textContent = `${output.reps} × ${output.exercise}`;
 };
 
+// initialize the app
 displayExercise();
 displayCatalog();
