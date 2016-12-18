@@ -4,7 +4,7 @@ html,body {
   margin: 0;
 }
 body {
-  font-family: "Avenir Next", Avenir, sans-serif;
+  font-family: "Avenir Next", Avenir, Helvetica, sans-serif;
   color: #dedede;
   font-weight: 300;
   font-size: 5vmin;
@@ -16,13 +16,14 @@ h1 {
   font-size: 1.6em;
   font-weight: 300;
   margin: 0;
+  line-height: 2.5em;
   position: relative;
 }
 h1::after {
   content: '';
   background: deeppink;
   width: 100%;
-  height: 2em;;
+  height: 100%;
   display: inline-block;
   position: absolute;
   top: 0;
@@ -33,21 +34,24 @@ h1::after {
 h2 {
   font-style: italic;
   font-size: 1.1em;
-  font-weight: 300;
+  font-weight: 500;
+  line-height: 1.5em;
   margin-top: 0;
   position: relative;
+  transform: rotate(-1.5deg);
 }
 h2::after {
   content: '';
   background: deepskyblue;
   width: 120%;
-  height: 1.5em;;
+  height: 100%;
   display: inline-block;
   position: absolute;
-  top: 0em;
-  left: -1em;
-  transform: rotate(-2deg);
+  top: -0.4em;
+  left: -10%;
+  transform: rotate(-1deg);
   z-index: -1;
+  padding: 0.5em;
 }
 
 .content {
@@ -69,6 +73,7 @@ h2::after {
   text-transform: uppercase;
   font-weight: bolder;
   font-size: 1.9em;
+  line-height: 2em;
   position: relative;
   color: #333;
 }
@@ -76,7 +81,7 @@ h2::after {
   content: '';
   background: lime;
   width: 120%;
-  height: 1.5em;;
+  height: 100%;
   display: inline-block;
   position: absolute;
   top: 0em;
@@ -84,11 +89,15 @@ h2::after {
   transform: rotate(2deg);
   z-index: -1;
 }
-
+.multiplier {
+  color: white;
+  font-weight: bold;
+}
 .catalog-box {
   display: flex;
+  align-self: flex-end;
   flex-wrap: wrap;
-  width: 40vw;
+  width: 30vw;
   font-size: 0.6em;
   background: black;
   text-align: center;
@@ -102,13 +111,13 @@ h2::after {
 .catalog-box dt {
   background: tomato;
   display: inline-block;
-  width: 60%;
+  width: 70%;
   margin: 0;
 }
 .catalog-box dd {
   background: orange;
   display: inline-block;
-  width: 40%;
+  width: 30%;
   margin: 0;
   text-align: center;
 }
