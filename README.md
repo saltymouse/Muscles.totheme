@@ -1,5 +1,5 @@
 # Muscles.totheme
-A display screen for Dejal's Time Out app for doing exercises during break time.
+A display screen for [Dejal's Time Out](http://www.dejal.com/timeout/) app for doing exercises during break time.
 
 Muscles shows a random exercise with reps to do during break time.
 
