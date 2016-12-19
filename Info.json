@@ -4,6 +4,7 @@
     "email": "saltymouse@outlook.com",
     "url": "http://github.com/saltymouse"
   },
+  "type" : "html5",
   "comments": "Short workouts to get you pumped and ready to work.",
   "rootDocument": "index.html",
   "created": "2016-10-29",
