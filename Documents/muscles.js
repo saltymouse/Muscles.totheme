@@ -4,13 +4,17 @@ let displayBox = document.querySelector('.current-exercise'),
 
 // set default exercises if none exist in localStorage
 if (!window.localStorage.getItem('exercises')) {
-  let catalog = {
-    ex01: { name: "Push Ups", reps: 10 },
-    ex02: { name: "Sit Ups", reps: 30 },
-    ex03: { name: "Lunges", reps: 30 },
-    ex04: { name: "Squats", reps: 15 }
-  }
+  setDefaultCatalog();
+}
 
+function setDefaultCatalog() {
+  let catalog = {
+    ex01: { name: 'Push Ups', reps: 10 },
+    ex02: { name: 'Sit Ups', reps: 30 },
+    ex03: { name: 'Lunges', reps: 30 },
+    ex04: { name: 'Squats', reps: 15 },
+    ex05: { name: 'Jumping Jacks', reps: 20 }
+  }
   localStorage.setItem('exercises', JSON.stringify(catalog));
 }
 
