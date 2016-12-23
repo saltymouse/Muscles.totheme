@@ -109,17 +109,23 @@ h2::after {
   flex-wrap: wrap;
   width: 30vw;
   font-size: 0.6em;
-  background: black;
+  background: grey;
   text-align: center;
 }
-
+.catalog-title {
+  width: 100%;
+  font-size: 1em;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
 /* container for exercise/reps data pairs */
 .catalog-box dl {
   display: block;
   width: 100%;
   margin: 0;
 }
-/* name of the exercise */
+/* exercise name */
 .catalog-box dt {
   background: var(--catalog-name);
   display: inline-block;
