@@ -1,27 +1,35 @@
+:root {
+  --heading: RGBA(254, 233, 78, 1); /* lemon sorbet */
+  --subheading: RGBA(253, 151, 39, 1); /* orange sorbet */
+  --catalog-name: RGBA(140, 193, 82, 1); /* matcha */
+  --catalog-reps: RGBA(205, 218, 73, 1); /* lemongrass */
+  --current-exercise: RGBA(30, 170, 241, 1); /* california sky */
+}
+
 html,body {
   height: 100%;
   overflow: hidden;
   margin: 0;
 }
 body {
-  font-family: "Avenir Next", Avenir, Helvetica, sans-serif;
-  color: #dedede;
+  font-family: "Avenir Next", Avenir, "Helvetica Neue", Helvetica, sans-serif;
+  color: #fff;
   font-weight: 300;
   font-size: 5vmin;
   line-height: 1.5;
-  background: radial-gradient( circle, transparent, #000); /* color will be set in the Time Out prefs so transparent is set here */
+  background: radial-gradient(circle, transparent, #000); /* color will be set in the Time Out prefs so transparent is set here */
 }
 
 h1 {
   font-size: 1.6em;
-  font-weight: 300;
+  font-weight: bold;
   margin: 0;
   line-height: 2.5em;
   position: relative;
 }
 h1::after {
   content: '';
-  background: deeppink;
+  background: var(--heading);
   width: 100%;
   height: 100%;
   display: inline-block;
@@ -42,14 +50,14 @@ h2 {
 }
 h2::after {
   content: '';
-  background: deepskyblue;
+  background: var(--subheading);
   width: 120%;
   height: 100%;
   display: inline-block;
   position: absolute;
   top: -0.4em;
-  left: -10%;
-  transform: rotate(-1deg);
+  left: -15%;
+  transform: rotate(-0.5deg);
   z-index: -1;
   padding: 0.5em;
 }
@@ -79,7 +87,7 @@ h2::after {
 }
 .current-exercise::after {
   content: '';
-  background: lime;
+  background: var(--current-exercise);
   width: 120%;
   height: 100%;
   display: inline-block;
@@ -103,21 +111,26 @@ h2::after {
   text-align: center;
 }
 
+/* container for exercise/reps data pairs */
 .catalog-box dl {
   display: block;
   width: 100%;
   margin: 0;
 }
+/* name of the exercise */
 .catalog-box dt {
-  background: tomato;
+  background: var(--catalog-name);
   display: inline-block;
   width: 70%;
   margin: 0;
+  font-weight: 400;
 }
+/* number of reps */
 .catalog-box dd {
-  background: orange;
+  background: var(--catalog-reps);
   display: inline-block;
   width: 30%;
   margin: 0;
   text-align: center;
+  font-weight: 700;
 }
