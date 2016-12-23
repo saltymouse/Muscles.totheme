@@ -1,12 +1,16 @@
 // grab our dom elements
 let displayBox = document.querySelector('.current-exercise'),
-  catalogBox = document.querySelector('.catalog-box');
+    catalogBox = document.querySelector('.catalog-box'),
+    resetButton = document.querySelector('.reset');
 
 // set default exercises if none exist in localStorage
 if (!window.localStorage.getItem('exercises')) {
   setDefaultCatalog();
 }
 
+resetButton.addEventListener('click', setDefaultCatalog);
+
+// define default set of exercises
 function setDefaultCatalog() {
   let catalog = {
     ex01: { name: 'Push Ups', reps: 10 },
