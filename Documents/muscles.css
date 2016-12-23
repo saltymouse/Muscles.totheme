@@ -17,7 +17,9 @@ body {
   font-weight: 300;
   font-size: 5vmin;
   line-height: 1.5;
-  background: radial-gradient(circle, transparent, #000); /* color will be set in the Time Out prefs so transparent is set here */
+  /* bg-color can be set in the Time Out prefs */
+  /* ...so it's left transparent is set here */
+  background: radial-gradient(circle, transparent, #000);
 }
 
 h1 {
