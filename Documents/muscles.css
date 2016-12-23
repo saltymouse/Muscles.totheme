@@ -4,6 +4,8 @@
   --catalog-name: RGBA(140, 193, 82, 1); /* matcha */
   --catalog-reps: RGBA(205, 218, 73, 1); /* lemongrass */
   --current-exercise: RGBA(30, 170, 241, 1); /* california sky */
+  --focus-text: RGBA(40, 40, 40, 1); /* slate grey */
+  --focus-bg: RGBA(220, 220, 220, 1); /* cloud grey */
 }
 
 html,body {
@@ -141,4 +143,11 @@ h2::after {
   margin: 0;
   text-align: center;
   font-weight: 700;
+}
+
+.catalog-box dt:focus,
+.catalog-box dd:focus {
+  outline: none; /* remove webkit's blue focus box on selected fields */
+  background: var(--focus-bg);
+  color: var(--focus-text);
 }
