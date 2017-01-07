@@ -106,7 +106,7 @@ h2::after {
   left: -10%;
   transform: rotate(2deg);
   z-index: -1;
-  animation: teeter 1s ease;
+  animation: teeter 1.5s ease;
   animation-iteration-count: infinite;
 }
 .multiplier {
@@ -190,13 +190,13 @@ h2::after {
 /* animation to show when reset icon is clicked */
 @keyframes flexy {
   0%, 100% {
-    transform: translate3d(0, 0, 0);
+    transform: scale3d(1, 1, 1);
   }
   10%, 30%, 50%, 70%, 90% {
-    transform: translate3d(-8px, 0, 0);
+    transform: scale3d(1.2, 0.8, 1);
   }
   20%, 40%, 60%, 80% {
-    transform: translate3d(8px, 0, 0);
+    transform: scale3d(0.8, 1.2, 1);
   }
 }
 @keyframes teeter {
