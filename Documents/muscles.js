@@ -8,9 +8,14 @@ if (!window.localStorage.getItem('exercises')) {
   setDefaultCatalog();
 }
 
-//
+// click the 💪 to reset to defaults
 resetButton.addEventListener('click', setDefaultCatalog);
 
+function resetRefresh() {
+  setDefaultCatalog();
+  displayExercise();
+  displayCatalog();
+}
 
 // define default set of exercises
 function setDefaultCatalog() {
@@ -23,6 +28,9 @@ function setDefaultCatalog() {
   }
   // write exercises to localStorage
   localStorage.setItem('exercises', JSON.stringify(catalog));
+
+  // update to latest data
+  localCatalog = JSON.parse(localStorage.getItem('exercises'));
 }
 
 // set a variable for the localStorage 'exercises' item
@@ -105,3 +113,8 @@ function displayExercise() {
 // initialize the app
 displayExercise();
 displayCatalog();
+
+// add the 'loaded' class upon successful document load
+window.onload = function(e) {
+  document.querySelector('body').className = 'loaded';
+}
