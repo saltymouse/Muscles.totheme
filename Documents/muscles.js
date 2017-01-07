@@ -8,7 +8,9 @@ if (!window.localStorage.getItem('exercises')) {
   setDefaultCatalog();
 }
 
+//
 resetButton.addEventListener('click', setDefaultCatalog);
+
 
 // define default set of exercises
 function setDefaultCatalog() {
@@ -19,12 +21,14 @@ function setDefaultCatalog() {
     ex04: { name: 'Squats', reps: 15 },
     ex05: { name: 'Jumping Jacks', reps: 20 }
   }
+  // write exercises to localStorage
   localStorage.setItem('exercises', JSON.stringify(catalog));
 }
 
 // set a variable for the localStorage 'exercises' item
 let localCatalog = JSON.parse(localStorage.getItem('exercises'));
 
+// save changes to localStorage upon each 'input' event
 catalogBox.addEventListener('input', function (event) {
   // make a copy of the existing localStorage data
   let newCatalog = localCatalog;
@@ -41,11 +45,13 @@ catalogBox.addEventListener('input', function (event) {
 
 }, false)
 
+// this is what will be read for the final output to display
 let output = {
   exercise: 0,
   reps: 0
 };
 
+// create html elements for each exercises + reps based on data from localStorage
 function displayCatalog() {
   for (var item in localCatalog) {
 
@@ -74,6 +80,7 @@ function displayCatalog() {
   };
 };
 
+// chooses a random exercise and sets value to global 'output' var
 function pickRandomExercise() {
   // make an array out of the localStorage object
   var keys = Object.keys(localCatalog);
@@ -89,6 +96,7 @@ function pickRandomExercise() {
   output.reps = localCatalog[prop].reps;
 }
 
+// displays the 'output' values in the large, center HTML .displayBox
 function displayExercise() {
   pickRandomExercise();
   displayBox.innerHTML = `${output.reps} <span class="multiplier">×</span> ${output.exercise}`;
