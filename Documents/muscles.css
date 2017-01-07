@@ -158,6 +158,7 @@ h2::after {
   outline: none; /* remove webkit's blue focus box on selected fields */
   background: var(--focus-bg);
   color: var(--focus-text);
+  transition: all 200ms ease;
 }
 
 .reset {
