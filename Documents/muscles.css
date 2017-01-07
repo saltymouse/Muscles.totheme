@@ -24,7 +24,7 @@ body {
   /* ...so it's left transparent is set here */
   background: radial-gradient(circle, transparent, #000);
 }
-
+/* a nice fade-in effect to lessen the harsh transition */
 .loaded {
   opacity: 1;
   transition-delay: 5s;
@@ -106,6 +106,8 @@ h2::after {
   left: -10%;
   transform: rotate(2deg);
   z-index: -1;
+  animation: teeter 1s ease;
+  animation-iteration-count: infinite;
 }
 .multiplier {
   color: white;
@@ -195,6 +197,14 @@ h2::after {
   }
   20%, 40%, 60%, 80% {
     transform: translate3d(8px, 0, 0);
+  }
+}
+@keyframes teeter {
+  0%, 100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
   }
 }
 .pulse {
