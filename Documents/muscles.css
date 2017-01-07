@@ -153,5 +153,25 @@ h2::after {
 }
 
 .reset {
+  display: inline-block;
   cursor: pointer;
+  transition: transform 2s ease;
 }
+.reset:not(:active) {
+  animation: flexy 1s ease;
+  transition: transition 1s step-end; /* step-end is used to jump to the end of the animation to ensure the whole animation is run on click (:active) */
+}
+/* animation to show when reset icon is clicked */
+@keyframes flexy {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  10%, 30%, 50%, 70%, 90% {
+    transform: translate3d(-8px, 0, 0);
+  }
+  20%, 40%, 60%, 80% {
+    transform: translate3d(8px, 0, 0);
+  }
+}
+
+
