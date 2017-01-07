@@ -104,7 +104,7 @@ h2::after {
   display: inline-block;
   position: absolute;
   top: 0em;
-  left: -0.5em;
+  left: -10%;
   transform: rotate(2deg);
   z-index: -1;
 }
