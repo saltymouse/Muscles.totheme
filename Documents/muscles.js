@@ -9,7 +9,7 @@ if (!window.localStorage.getItem('exercises')) {
 }
 
 // click the 💪 to reset to defaults
-resetButton.addEventListener('click', setDefaultCatalog);
+resetButton.addEventListener('click', resetRefresh);
 
 function resetRefresh() {
   setDefaultCatalog();
@@ -61,6 +61,15 @@ let output = {
 
 // create html elements for each exercises + reps based on data from localStorage
 function displayCatalog() {
+  // get current list of <dl> exercises
+  let catalogChildren = document.querySelectorAll('dl');
+  // remove existing children to start fresh
+  if (catalogChildren) {
+    catalogChildren.forEach(function(child) {
+      catalogBox.removeChild(child);
+    });
+  }
+
   for (var item in localCatalog) {
 
     if (typeof localCatalog[item] !== 'function') {
