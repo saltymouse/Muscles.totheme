@@ -172,14 +172,14 @@ h2::after {
   opacity: 1;
   content: attr(title);
   position: absolute;
-  padding: 4px 8px;
+  padding: 0.1em 0.2em;
   color: white;
   background: var(--current-exercise);
   font-weight: normal;
   font-size: 0.6em;
   text-transform: capitalize;
   right: 0%;
-  top: -50%;
+  top: -100%;
   z-index: 11;
   white-space: nowrap;
 
