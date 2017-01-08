@@ -16,6 +16,8 @@ function resetRefresh() {
   displayExercise();
   displayCatalog();
 }
+// set a variable for the localStorage 'exercises' item
+let localCatalog = JSON.parse(localStorage.getItem('exercises'));
 
 // define default set of exercises
 function setDefaultCatalog() {
@@ -32,9 +34,6 @@ function setDefaultCatalog() {
   // update to latest data
   localCatalog = JSON.parse(localStorage.getItem('exercises'));
 }
-
-// set a variable for the localStorage 'exercises' item
-let localCatalog = JSON.parse(localStorage.getItem('exercises'));
 
 // save changes to localStorage upon each 'input' event
 catalogBox.addEventListener('input', function (event) {
