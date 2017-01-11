@@ -17,7 +17,7 @@ function resetRefresh() {
   displayCatalog();
 }
 // set a variable for the localStorage 'exercises' item
-let localCatalog = JSON.parse(localStorage.getItem('exercises'));
+let localCatalog = JSON.parse(localStorage.getItem('exercises')) || {};
 
 // define default set of exercises
 function setDefaultCatalog() {
