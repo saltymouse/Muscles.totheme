@@ -1,7 +1,21 @@
+// localStorage.removeItem('exercises');
+
 // grab our dom elements
 let displayBox = document.querySelector('.current-exercise'),
     catalogBox = document.querySelector('.catalog-box'),
     resetButton = document.querySelector('.reset');
+
+// define a default set of exercises
+let catalog = {
+  ex01: { name: 'Push Ups', reps: 10 },
+  ex02: { name: 'Sit Ups', reps: 30 },
+  ex03: { name: 'Lunges', reps: 30 },
+  ex04: { name: 'Squats', reps: 15 },
+  ex05: { name: 'Jumping Jacks', reps: 20 }
+};
+
+// set a variable for the localStorage 'exercises' item
+let localCatalog = JSON.parse(localStorage.getItem('exercises')) || catalog;
 
 // set default exercises if none exist in localStorage
 if (!window.localStorage.getItem('exercises')) {
@@ -12,22 +26,20 @@ if (!window.localStorage.getItem('exercises')) {
 resetButton.addEventListener('click', resetRefresh);
 
 function resetRefresh() {
+  // remove localStorage item
+  localStorage.removeItem('exercises');
+
+  // update localStorage...
   setDefaultCatalog();
+
+  // display the results
   displayExercise();
   displayCatalog();
 }
-// set a variable for the localStorage 'exercises' item
-let localCatalog = JSON.parse(localStorage.getItem('exercises')) || {};
+
 
 // define default set of exercises
 function setDefaultCatalog() {
-  let catalog = {
-    ex01: { name: 'Push Ups', reps: 10 },
-    ex02: { name: 'Sit Ups', reps: 30 },
-    ex03: { name: 'Lunges', reps: 30 },
-    ex04: { name: 'Squats', reps: 15 },
-    ex05: { name: 'Jumping Jacks', reps: 20 }
-  }
   // write exercises to localStorage
   localStorage.setItem('exercises', JSON.stringify(catalog));
 
