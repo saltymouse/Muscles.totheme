@@ -142,6 +142,9 @@ h2::after {
   width: 70%;
   margin: 0;
   font-weight: 400;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 /* number of reps */
 .catalog-box dd {
@@ -151,6 +154,9 @@ h2::after {
   margin: 0;
   text-align: center;
   font-weight: 700;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .catalog-box dt:focus,
@@ -221,5 +227,3 @@ h2::after {
     transform: scale(1.1);
   }
 }
-
-
