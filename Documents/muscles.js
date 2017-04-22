@@ -62,7 +62,7 @@ catalogBox.addEventListener('keydown', function (event) {
   let focusedChildName = event.target.getAttribute('data-item');
 
   // update relevant datum within the newCatalog with user input/changes
-  newCatalog[focusedParentName][focusedChildName] = event.target.innerHTML;
+  newCatalog[focusedParentName][focusedChildName] = event.target.textContent;
 
   // push changes to localStorage
   localStorage.setItem('exercises', JSON.stringify(newCatalog));
