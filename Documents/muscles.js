@@ -29,7 +29,7 @@ function resetRefresh() {
   // remove localStorage item
   localStorage.removeItem('exercises');
 
-  // update localStorage...
+  // update localStorage with defaults...
   setDefaultCatalog();
 
   // display the results
@@ -48,7 +48,12 @@ function setDefaultCatalog() {
 }
 
 // save changes to localStorage upon each 'input' event
-catalogBox.addEventListener('input', function (event) {
+catalogBox.addEventListener('keydown', function (event) {
+  // don't allow 'return' key to create new-lines
+  if (event.keyCode === 13) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
   // make a copy of the existing localStorage data
   let newCatalog = localCatalog;
 
