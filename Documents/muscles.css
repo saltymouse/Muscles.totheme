@@ -123,12 +123,11 @@ h2::before {
   animation-iteration-count: infinite;
 }
 .current-exercise::before {
-
-  top: 0em;
-  left: -10%;
-    width: 123%;
-    height: 110%;
-    opacity: 0.5;
+  top: -1%;
+  left: -12%;
+  width: 125%;
+  height: 110%;
+  opacity: 0.5;
 }
 .multiplier {
   color: white;
