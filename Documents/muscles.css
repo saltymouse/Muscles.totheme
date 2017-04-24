@@ -1,5 +1,5 @@
 :root {
-  --heading: RGBA(254, 233, 78, 1); /* lemon sorbet */
+  --heading: RGBA(239, 102, 254, 1); /* hibiscus */
   --subheading: RGBA(253, 151, 39, 1); /* orange sorbet */
   --catalog-name: RGBA(140, 193, 82, 1); /* matcha */
   --catalog-reps: RGBA(205, 218, 73, 1); /* lemongrass */
@@ -7,8 +7,12 @@
   --focus-text: RGBA(40, 40, 40, 1); /* slate grey */
   --focus-bg: RGBA(220, 220, 220, 1); /* cloud grey */
 }
-
-html,body {
+* {
+  /*border: 1px dotted oldlace;*/
+  box-sizing: border-box;
+}
+html,
+body {
   height: 100%;
   overflow: hidden;
   margin: 0;
@@ -32,32 +36,45 @@ body {
 }
 
 h1 {
+  line-height: 2em;
   font-size: 1.6em;
   font-weight: bold;
-  margin: 0;
-  line-height: 2.5em;
+  margin: 0.5em 0 0.5em;
   position: relative;
 }
+h1::before,
 h1::after {
   content: '';
   background: var(--heading);
-  width: 120%;
-  height: 100%;
   display: inline-block;
   position: absolute;
   top: 0;
   left: -10%;
-  transform: rotate(4deg);
   z-index: -1;
+}
+h1::after {
+  transform: rotate(2deg);
+  width: 120%;
+  height: 100%;
+}
+h1::before {
+  transform: rotate(2deg);
+  top: 0%;
+  left: -11%;
+  opacity: 0.5;
+  width: 122%;
+  height: 110%;
+
 }
 h2 {
   font-style: italic;
   font-size: 1.1em;
   font-weight: 500;
   line-height: 1.5em;
-  margin-top: 0;
+  margin: 0;
   position: relative;
 }
+h2::before,
 h2::after {
   content: '';
   background: var(--subheading);
@@ -71,20 +88,13 @@ h2::after {
   z-index: -1;
   padding: 0.5em;
 }
+h2::before {
+  width: 122%;
+  height: 110%;
+  top: -0.5%;
+  left: -15%;
+  opacity: 0.5;
 
-.content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-}
-
-.cell {
-  display: inline-block;
-  flex: 0 0 auto;
-  text-align: center;
 }
 
 .current-exercise {
@@ -94,8 +104,11 @@ h2::after {
   line-height: 2em;
   position: relative;
   color: #333;
+  margin: 1em 0 0;
+  padding: 0;
 }
-.current-exercise::after {
+.current-exercise::after,
+.current-exercise::before {
   content: '';
   background: var(--current-exercise);
   width: 120%;
@@ -109,15 +122,43 @@ h2::after {
   animation: teeter 1.5s ease;
   animation-iteration-count: infinite;
 }
+.current-exercise::before {
+
+  top: 0em;
+  left: -10%;
+    width: 123%;
+    height: 110%;
+    opacity: 0.5;
+}
 .multiplier {
   color: white;
   font-weight: bold;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.cell {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+  text-align: center;
+}
+
+
 .catalog-box {
   display: flex;
   align-self: flex-end;
   flex-wrap: wrap;
-  width: 30vw;
+  justify-content: space-between;
+  align-items: stretch;
+  width: 33vw;
   font-size: 0.6em;
   background: grey;
   text-align: center;
@@ -135,28 +176,29 @@ h2::after {
   width: 100%;
   margin: 0;
 }
+/* general rules for both name and reps */
+.catalog-box dl dt,
+.catalog-box dl dd {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  text-overflow: ellipsis ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0;
+}
 /* exercise name */
 .catalog-box dt {
   background: var(--catalog-name);
-  display: inline-block;
   width: 70%;
-  margin: 0;
   font-weight: 400;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 /* number of reps */
 .catalog-box dd {
   background: var(--catalog-reps);
-  display: inline-block;
   width: 30%;
-  margin: 0;
-  text-align: center;
   font-weight: 700;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .catalog-box dt:focus,
