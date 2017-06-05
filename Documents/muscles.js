@@ -48,7 +48,7 @@ function setDefaultCatalog() {
 }
 
 // save changes to localStorage upon each 'input' event
-catalogBox.addEventListener('keydown', function (event) {
+catalogBox.addEventListener('keyup', function (event) {
   // don't allow 'return' key to create new-lines
   if (event.keyCode === 13) {
     event.preventDefault();
