@@ -163,26 +163,32 @@ h2::before {
   text-align: center;
 }
 .catalog-title {
+  display: flex;
   width: 100%;
   font-size: 1em;
   margin: 0;
   padding: 0;
   text-align: center;
 }
+
+.title-ctrl {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /* container for exercise/reps data pairs */
 .catalog-box dl {
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   margin: 0;
 }
 /* general rules for both name and reps */
 .catalog-box dl dt,
 .catalog-box dl dd {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  text-overflow: ellipsis ellipsis;
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
   margin: 0;
@@ -190,14 +196,31 @@ h2::before {
 /* exercise name */
 .catalog-box dt {
   background: var(--catalog-name);
-  width: 70%;
+  width: 60%;
   font-weight: 400;
 }
 /* number of reps */
-.catalog-box dd {
+.catalog-box dd.reps-box {
   background: var(--catalog-reps);
   width: 30%;
   font-weight: 700;
+}
+/* controls */
+.catalog-box dd.ctrl-box {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: var(--catalog-reps);
+  width: 10%;
+  font-weight: 700;
+}
+
+button {
+  margin: 0;
+  border: none;
+  min-width: 32px;
+  min-height: 32px;
 }
 
 .catalog-box dt:focus,
