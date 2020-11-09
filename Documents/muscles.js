@@ -2,8 +2,9 @@
 
 // grab our dom elements
 let displayBox = document.querySelector('.current-exercise'),
-    catalogBox = document.querySelector('.catalog-box'),
-    resetButton = document.querySelector('.reset');
+  catalogBox = document.querySelector('.catalog-box'),
+  resetButton = document.querySelector('.reset');
+  addButton = document.querySelector('.add-btn');
 
 // define a default set of exercises
 let catalog = {
@@ -37,6 +38,38 @@ function resetRefresh() {
   displayCatalog();
 }
 
+function selectText (element) {
+  selection = window.getSelection();
+  range = document.createRange();
+  range.selectNodeContents(element);
+  selection.removeAllRanges();
+  selection.addRange(range);
+}
+
+addButton.addEventListener('click', createExercise);
+
+function createExercise() {
+  const exerciseId = 'ex' + Math.round(Math.random() * 10000);
+  localCatalog[exerciseId] = { name: 'Burpees', reps: 10 }
+  updateLocalStorage(localCatalog);
+  displayCatalog();
+  // set focus after creating
+  const exerciseElement  = document.getElementById(exerciseId)
+    .getElementsByTagName('dt')[0]
+
+  exerciseElement.focus();
+}
+
+function removeExercise(key) {
+  delete localCatalog[key]
+  updateLocalStorage(localCatalog);
+  displayCatalog();
+}
+
+function updateLocalStorage (newCatalog) {
+  // push changes to localStorage
+  localStorage.setItem('exercises', JSON.stringify(newCatalog));
+}
 
 // define default set of exercises
 function setDefaultCatalog() {
@@ -64,8 +97,7 @@ catalogBox.addEventListener('keyup', function (event) {
   // update relevant datum within the newCatalog with user input/changes
   newCatalog[focusedParentName][focusedChildName] = event.target.textContent;
 
-  // push changes to localStorage
-  localStorage.setItem('exercises', JSON.stringify(newCatalog));
+  updateLocalStorage(newCatalog)
 
 }, false)
 
@@ -81,32 +113,46 @@ function displayCatalog() {
   let catalogChildren = document.querySelectorAll('dl');
   // remove existing children to start fresh
   if (catalogChildren) {
-    catalogChildren.forEach(function(child) {
+    catalogChildren.forEach(function (child) {
       catalogBox.removeChild(child);
     });
   }
 
-  for (var item in localCatalog) {
+  for (const item in localCatalog) {
 
     if (typeof localCatalog[item] !== 'function') {
 
       let exerciseSet = document.createElement('dl'),
         nameBox = document.createElement('dt'),
-        repsBox = document.createElement('dd');
+        repsBox = document.createElement('dd'),
+        ctrlBox = document.createElement('dd'),
+        removeBtn = document.createElement('button');
 
       exerciseSet.setAttribute('data-item', item);
+      exerciseSet.setAttribute('id', item);
 
       nameBox.contentEditable = true;
       repsBox.contentEditable = true;
 
+      //select text by default on focus
+      nameBox.onfocus = ev => selectText(ev.target)
+      repsBox.onfocus = ev => selectText(ev.target)
+
       nameBox.setAttribute('data-item', 'name');
       repsBox.setAttribute('data-item', 'reps');
+      repsBox.setAttribute('class', 'reps-box');
+      ctrlBox.setAttribute('class', 'ctrl-box');
 
       nameBox.textContent = localCatalog[item].name;
       repsBox.textContent = localCatalog[item].reps;
+      
+      removeBtn.textContent = '➖';
+      removeBtn.onclick = () => removeExercise(item);
+      ctrlBox.appendChild(removeBtn)
 
       exerciseSet.appendChild(nameBox);
       exerciseSet.appendChild(repsBox);
+      exerciseSet.appendChild(ctrlBox);
 
       catalogBox.appendChild(exerciseSet);
     }
@@ -140,6 +186,6 @@ displayExercise();
 displayCatalog();
 
 // add the 'loaded' class upon successful document load
-window.onload = function(e) {
+window.onload = function (e) {
   document.querySelector('body').className = 'loaded';
 }
